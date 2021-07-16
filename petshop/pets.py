@@ -107,7 +107,7 @@ def edit(pid):
         description = request.form.get('description')
         cursor.execute("update pet set description=? where id = ?",[description,pid])
         sold = request.form.get("sold")
-        if sold == "s":
+        if sold == "1":
             sold=datetime.datetime.now().strftime("%Y-%m-%d")
             cursor.execute("update pet set sold=? where id = ?",[sold,pid])
         conn.commit()
