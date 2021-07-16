@@ -105,6 +105,8 @@ def edit(pid):
         return render_template("editpet.html", **data)
     elif request.method == "POST":
         description = request.form.get('description')
+        cursor.execute("update pet set description=description where id = ?", [pid])
+        conn.commit()
         sold = request.form.get("sold")
         # TODO Handle sold
         return redirect(url_for("pets.pet_info", pid=pid), 302)
